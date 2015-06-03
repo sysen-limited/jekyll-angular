@@ -22,7 +22,7 @@ and `site`
 
 #### Javascript
 
-In here you can build up any javascript you need to support dynamic interactions on your site, these files will be compiled automatically for you on deployment / preview
+In here you can build up any javascript you need to support dynamic interactions on your site, these files will be compiled automatically for you on deployment / preview, as we are looking to support AngularJS a basic setup using Angular for all javascript is used.
 
 #### LESS
 
@@ -38,7 +38,7 @@ First you need to install the supporting libraries, we use node for this you can
 
 With these tools now installed you can install the project dependencies using the command `npm install`
 
-- During development use `grunt run` on the command line which will monitor changes and update the site for you.
+- During development use `grunt run` on the command line which will monitor changes and update the site for you. You can then use 'http://localhost:1337' and changes made will auto-reload thanks to livereload.
 
 - To create the static site with minified assets use the command `grunt build`
 

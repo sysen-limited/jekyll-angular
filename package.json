@@ -46,6 +46,7 @@
 
     "grunt-contrib-copy": "~0.7.0",
     "grunt-contrib-compress": "~0.13.0",
+    "grunt-contrib-connect": "latest",
     "grunt-contrib-watch": "latest",
 
     "load-grunt-tasks": "~2.0.0",

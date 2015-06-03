@@ -188,7 +188,7 @@ module.exports = function (grunt) {
                 reportpath: '<%= clean.validationLogs %>/report.json'
             },
             files: {
-                src: '<%= site %>/**/*.html'
+                src: '<%= target %>/**/*.html'
             }
         },
 
@@ -202,18 +202,37 @@ module.exports = function (grunt) {
             }
         },
 
+        connect: {
+            server: {
+                options: {
+                    port: 1337,
+                    base: '_gh_pages',
+                    livereload: true
+                }
+            }
+        },
+
         watch: {
             script: {
                 files: ['src/**/*.js'],
-                tasks: ['js-compile']
+                tasks: ['js-compile'],
+                options: {
+                    livereload: true
+                }
             },
             css: {
                 files: 'design/less/**/*.less',
-                tasks: ['css-compile']
+                tasks: ['css-compile'],
+                options: {
+                    livereload: true
+                }
             },
             templates: {
-                files: ['site/**/*.html'],
-                tasks: ['jekyll:build', 'copy']
+                files: ['site/**/*.html', 'site/**/*.md'],
+                tasks: ['jekyll:build', 'copy'],
+                options: {
+                    livereload: true
+                }
             }
         }
     });
@@ -237,6 +256,6 @@ module.exports = function (grunt) {
 
     // Full execution
     grunt.registerTask('build', ['clean:target', 'test', 'docs', 'assets']);
-    grunt.registerTask('run', ['jekyll:build', 'js-compile', 'css-compile', 'copy', 'watch']);
+    grunt.registerTask('run', ['jekyll:build', 'js-compile', 'css-compile', 'copy', 'connect:server', 'watch']);
     grunt.registerTask('default', ['build']);
 };
