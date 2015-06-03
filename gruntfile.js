@@ -194,7 +194,10 @@ module.exports = function (grunt) {
 
         copy: {
             dist: {
-                src: '<%= site %>/assets/*/*',
+                expand: true,
+                filter: 'isFile',
+                cwd: '<%= site %>/assets',
+                src: '*/*',
                 dest: '<%= target %>/assets/'
             }
         },
