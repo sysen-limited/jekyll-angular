@@ -118,7 +118,7 @@ module.exports = function (grunt) {
                 plugins: [
                     'karma-jasmine',
                     'karma-phantomjs-launcher',
-                    'karma-coverage-0.11',
+                    'karma-coverage',
                     'karma-spec-reporter'
                 ],
                 basePath: '.',
@@ -185,7 +185,10 @@ module.exports = function (grunt) {
                 failHard: true,
                 reset: true,
                 path: '<%= clean.validationLogs %>/status.json',
-                reportpath: '<%= clean.validationLogs %>/report.json'
+                reportpath: '<%= clean.validationLogs %>/report.json',
+                relaxerror: [
+                    'This interface to HTML5 document checking is deprecated.'
+                ]
             },
             files: {
                 src: '<%= target %>/**/*.html'
@@ -214,15 +217,15 @@ module.exports = function (grunt) {
 
         watch: {
             script: {
-                files: ['src/**/*.js'],
-                tasks: ['js-compile'],
+                files: ['javascript/<%= pkg.name %>.js', 'javascript/src/**/*.js'],
+                tasks: ['js-compile', 'copy'],
                 options: {
                     livereload: true
                 }
             },
             css: {
-                files: 'design/less/**/*.less',
-                tasks: ['css-compile'],
+                files: 'less/**/*.less',
+                tasks: ['css-compile', 'copy'],
                 options: {
                     livereload: true
                 }
